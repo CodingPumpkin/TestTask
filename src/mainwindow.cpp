@@ -22,5 +22,5 @@ MainWindow::~MainWindow()
 
 void MainWindow::update_cost(float cost)
 {
-    label->setText(QString("Total: ") + QString::number(COST * cost / UNIT_OF_DISTANCE ) + QString(" USD"));
+    label->setText(QString("Total: ") + QString::number(std::ceil(COST * cost / UNIT_OF_DISTANCE * 100) / 100 ) + QString(" USD"));
 }

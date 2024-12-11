@@ -24,6 +24,7 @@ public:
 
 signals:
     void done(float cost);
+    void start_set();
 protected:
     void paintEvent(QPaintEvent *event) override;
     void mousePressEvent(QMouseEvent *e);

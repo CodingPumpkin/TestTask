@@ -49,7 +49,7 @@ float Solver::tsp(int pos)
     if (order == 100) {
         return cost_matrix[pos][start_node];
     }
-//    float res = MY_MAX_FLOAT;
+    float res = MY_MAX_FLOAT;
     for (int i = 0; i < NUMBER_OF_POINTS; i++)
     {
         if ((visited[i] < 0) && (cost_matrix[i][pos] > 0))

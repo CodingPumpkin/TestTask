@@ -15,7 +15,7 @@
 #define POINT_SIZE 2
 
 
-#define UNIT_OF_DISTANCE 10000
+#define UNIT_OF_DISTANCE 100
 #define COST 10
 
 #define START_COLOR Qt::red

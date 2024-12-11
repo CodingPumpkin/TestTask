@@ -2,7 +2,9 @@
 
 Canvas::Canvas(QWidget *parent) : QWidget{parent}
 {
+    connect(this, &Canvas::start_set, this, &Canvas::calculate);
     graph = Graph();
+
     solver = new Solver(graph);
     painter = new QPainter(this);
 }
@@ -41,8 +43,6 @@ void Canvas::paintEvent(QPaintEvent *event)
     }
     painter->end();
     event->accept();
-
-    calculate();
 }
 
 void Canvas::mousePressEvent(QMouseEvent *e)
@@ -70,6 +70,7 @@ void Canvas::mousePressEvent(QMouseEvent *e)
                 if (e->button() == START_BTN)
                 {
                     start_indx = i;
+                    emit start_set();
                 }
                 // else if (e->button() == DEST_BTN)
                 // {
