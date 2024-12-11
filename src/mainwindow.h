@@ -20,7 +20,7 @@ public:
     ~MainWindow();
     QCursor mouse_cursor;
 public slots:
-    void update_cost(float);
+    void update_cost(double);
 
 private:
     Canvas *canvas;

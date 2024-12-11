@@ -10,18 +10,18 @@ class Solver
 public:
     Solver(Graph);
     void solve(int );
-    float get_cost();
+    double get_cost();
     void print_visited();
     void clear();
 
 private:
     int start_node;
     int order;
-    float cost;
-    float cost_matrix[NUMBER_OF_POINTS][NUMBER_OF_POINTS];
+    double cost;
+    double cost_matrix[NUMBER_OF_POINTS][NUMBER_OF_POINTS];
     int visited[NUMBER_OF_POINTS];
     void calculate_cost_matrix();
-    float tsp(int);
+    double tsp(int);
     Graph graph;
 
 };

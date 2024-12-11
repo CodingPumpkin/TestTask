@@ -23,7 +23,7 @@ public:
     int dest_indx = -1;
 
 signals:
-    void done(float cost);
+    void done(double cost);
     void start_set();
 protected:
     void paintEvent(QPaintEvent *event) override;

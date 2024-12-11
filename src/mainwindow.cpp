@@ -20,7 +20,7 @@ MainWindow::~MainWindow()
     delete this->canvas;
 }
 
-void MainWindow::update_cost(float cost)
+void MainWindow::update_cost(double cost)
 {
     label->setText(QString("Sum: ") + QString::number(COST * cost / UNIT_OF_DISTANCE, 'f', 2) + QString(" USD"));
 }
