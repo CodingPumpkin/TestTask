@@ -1,0 +1,9 @@
+CMakeCache.txt
+CMakeFiles
+Makefile
+cmake_install.cmake
+points-to-visit
+points-to-visit_autogen
+.kdev4/
+.qt/
+.rcc/
