@@ -7,3 +7,4 @@ points-to-visit_autogen
 .kdev4/
 .qt/
 .rcc/
+src/.*

@@ -13,14 +13,11 @@ void Solver::clear()
     for (int i = 0; i < NUMBER_OF_POINTS; i++)
     {
         visited[i] = -1;
-        for (int j = 0; j < NUMBER_OF_POINTS; j++)
-            cost_matrix[i][j] = 0.0;
     }
 }
 
 void Solver::calculate_cost_matrix()
 {
-    float distance = 0.0;
     for (int i = 0; i < NUMBER_OF_POINTS; i++)
     {
         for(int connection : graph.vertices[i].connections)
@@ -31,22 +28,28 @@ void Solver::calculate_cost_matrix()
     }
 }
 
+float Solver::get_cost()
+{
+    return cost;
+}
+
 void Solver::solve(int start)
 {
     start_node = start;
-    int mask = 1;
+
     cost = tsp(start_node);
+
     printf("%f\n", cost);
 }
 
-int Solver::tsp(int pos)
+float Solver::tsp(int pos)
 {
+    visited[pos] = order;
+    order++;
     if (order == 100) {
         return cost_matrix[pos][start_node];
     }
-    order ++;
-    visited[pos] = order;
-    float res = MY_MAX_FLOAT;
+//    float res = MY_MAX_FLOAT;
     for (int i = 0; i < NUMBER_OF_POINTS; i++)
     {
         if ((visited[i] < 0) && (cost_matrix[i][pos] > 0))
@@ -57,7 +60,7 @@ int Solver::tsp(int pos)
     return res;
 }
 
-void Solver::print_path()
+void Solver::print_visited()
 {
     for (int i = 0; i < NUMBER_OF_POINTS; i++)
         printf("%d\t", visited[i]);

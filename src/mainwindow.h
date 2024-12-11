@@ -19,10 +19,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     QCursor mouse_cursor;
-// private slots:
-//     void on_pushButton_clear_clicked();
-//     void addNewPointCoords();
-//     void on_pushButton_calculate_clicked();
+public slots:
+    void update_cost(float);
 
 private:
     Canvas *canvas;

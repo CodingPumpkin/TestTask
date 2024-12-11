@@ -11,7 +11,7 @@ public:
     Solver(Graph);
     void solve(int );
     float get_cost();
-    void print_path();
+    void print_visited();
     void clear();
 
 private:
@@ -20,9 +20,8 @@ private:
     float cost;
     float cost_matrix[NUMBER_OF_POINTS][NUMBER_OF_POINTS];
     int visited[NUMBER_OF_POINTS];
-    int result[NUMBER_OF_POINTS];
     void calculate_cost_matrix();
-    int tsp(int);
+    float tsp(int);
     Graph graph;
 
 };

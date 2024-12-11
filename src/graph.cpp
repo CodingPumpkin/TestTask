@@ -39,7 +39,7 @@ void Graph::connect_verticies()
             {
                 //find closest point
                 int potential_connection = -1;
-                double min_distance = 999999999.0;
+                double min_distance = MY_MAX_FLOAT;
                 for (int j = 0; j < NUMBER_OF_POINTS; j++)
                 {
                     if ( (i !=j ) && !is_connected(i, j))

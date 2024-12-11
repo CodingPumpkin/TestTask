@@ -53,26 +53,30 @@ void Canvas::mousePressEvent(QMouseEvent *e)
     if (e->button() == CLEAR_BTN)
     {
         start_indx = -1;
-        dest_indx = -1;
+        // dest_indx = -1;
         solver->clear();
         update();
         return;
     }
-    for (int i = 0; i < NUMBER_OF_POINTS; i++)
+
+    if (start_indx  < 0)
     {
-        double dist = sqrt( (graph.vertices[i].x-x) * (graph.vertices[i].x-x) +
-        (graph.vertices[i].y-y) * (graph.vertices[i].y-y));
-        if (dist <= (double)(2*POINT_SIZE))
+        for (int i = 0; i < NUMBER_OF_POINTS; i++)
         {
-            if (e->button() == START_BTN)
+            double dist = sqrt( (graph.vertices[i].x-x) * (graph.vertices[i].x-x) +
+            (graph.vertices[i].y-y) * (graph.vertices[i].y-y));
+            if (dist <= (double)(2*POINT_SIZE))
             {
-                start_indx = i;
+                if (e->button() == START_BTN)
+                {
+                    start_indx = i;
+                }
+                // else if (e->button() == DEST_BTN)
+                // {
+                //     dest_indx = i;
+                // }
+                break;
             }
-            else if (e->button() == DEST_BTN)
-            {
-                dest_indx = i;
-            }
-            break;
         }
     }
     update();
@@ -82,8 +86,8 @@ void Canvas::calculate()
 {
     if(start_indx > 0)
     {
-        printf("Solving. . .\n");
         solver->solve(start_indx);
-        solver->print_path();
+        solver->print_visited();
+        emit done(solver->get_cost());
     }
 }
