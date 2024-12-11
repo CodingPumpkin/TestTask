@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     canvas->setFixedSize(WINDOW_W, WINDOW_H);
     connect(canvas, &Canvas::done, this, &MainWindow::update_cost);
     label = new QLabel(this);
-    label->setText("Total: XXX USD");
+    label->setText("Sum: XXX USD");
 }
 
 MainWindow::~MainWindow()
@@ -22,5 +22,5 @@ MainWindow::~MainWindow()
 
 void MainWindow::update_cost(float cost)
 {
-    label->setText(QString("Total: ") + QString::number(std::ceil(COST * cost / UNIT_OF_DISTANCE * 100) / 100 ) + QString(" USD"));
+    label->setText(QString("Sum: ") + QString::number(COST * cost / UNIT_OF_DISTANCE, 'f', 2) + QString(" USD"));
 }
