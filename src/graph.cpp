@@ -54,7 +54,6 @@ void Graph::connect_verticies()
                 }
                 if (potential_connection >= 0)
                 {
-                    printf("%d\t%d\n", cs, potential_connection);
                     vertices[i].connections.push_back(potential_connection);
                     vertices[potential_connection].connections.push_back(i);
                     cs++;

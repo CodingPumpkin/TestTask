@@ -1,19 +1,21 @@
 #include "canvas.h"
 
-Canvas::Canvas(QWidget *parent)
-: QWidget{parent}
+Canvas::Canvas(QWidget *parent) : QWidget{parent}
 {
     graph = Graph();
+    solver = new Solver(graph);
     painter = new QPainter(this);
 }
 
 Canvas::~Canvas()
 {
+    delete solver;
     delete painter;
 }
 
 void Canvas::paintEvent(QPaintEvent *event)
 {
+
     painter->begin(this);
     painter->setPen(QPen(Qt::green, 2, Qt::DashDotLine, Qt::RoundCap));
     painter->drawEllipse(QPoint(FIELD_W/2, FIELD_H/2), R, R);
@@ -39,6 +41,8 @@ void Canvas::paintEvent(QPaintEvent *event)
     }
     painter->end();
     event->accept();
+
+    calculate();
 }
 
 void Canvas::mousePressEvent(QMouseEvent *e)
@@ -50,6 +54,7 @@ void Canvas::mousePressEvent(QMouseEvent *e)
     {
         start_indx = -1;
         dest_indx = -1;
+        solver->clear();
         update();
         return;
     }
@@ -71,4 +76,14 @@ void Canvas::mousePressEvent(QMouseEvent *e)
         }
     }
     update();
+}
+
+void Canvas::calculate()
+{
+    if(start_indx > 0)
+    {
+        printf("Solving. . .\n");
+        solver->solve(start_indx);
+        solver->print_path();
+    }
 }

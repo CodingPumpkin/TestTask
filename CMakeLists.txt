@@ -18,6 +18,7 @@ set(SRC_LIST
     src/canvas.cpp
     src/graph.cpp
     src/utils.cpp
+    src/solver.cpp
     )
 
 qt_add_executable(${APP} ${SRC_LIST})

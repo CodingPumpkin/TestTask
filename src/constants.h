@@ -14,7 +14,8 @@
 
 #define POINT_SIZE 2
 
-#define MIN_COST 0.01
+
+#define UNIT_OF_DISTANCE 100
 #define COST 10
 
 #define START_COLOR Qt::red
@@ -23,3 +24,6 @@
 #define START_BTN Qt::LeftButton
 #define DEST_BTN Qt::RightButton
 #define CLEAR_BTN Qt::MiddleButton
+
+#define MY_MAX_INT 6400000
+#define MY_MAX_FLOAT 6400000.0

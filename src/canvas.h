@@ -11,6 +11,7 @@
 #include <iostream>
 
 #include "graph.h"
+#include "solver.h"
 
 class Canvas : public QWidget
 {
@@ -20,17 +21,19 @@ public:
     ~Canvas();
     int start_indx = -1;
     int dest_indx = -1;
+
 signals:
-    void newPointCreated();
+    void done(float cost);
 protected:
     void paintEvent(QPaintEvent *event) override;
     void mousePressEvent(QMouseEvent *e);
 private:
-    QImage image;
     QPainter *painter;
 
     Graph graph;
+    Solver *solver;
     void draw_points();
+    void calculate();
 };
 
 #endif // CANVAS_H

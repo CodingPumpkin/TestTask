@@ -20,8 +20,5 @@ namespace utils {
 
     double distance(utils::Vertex, utils::Vertex);
     double distance(int, int, int, int);
-}
-
-
-
+};
 #endif
